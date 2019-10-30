@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common;
+namespace app\Common;
 
 /**
  * Teacher module definition class

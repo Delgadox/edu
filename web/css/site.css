@@ -119,3 +119,20 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.tests{
+    width: 15%;
+    height: 300px;
+    margin-right: 30px;
+    border: 0px solid black;
+    box-shadow: 0 0 2px black;
+    float: left;
+}
+
+.info{
+
+}
+
+.button{
+
+}

@@ -1,50 +1,52 @@
 <?php
-
-use yii\helpers\Html;
-use yii\grid\GridView;
-
 /* @var $this yii\web\View */
-/* @var $searchModel app\test_system\models\test\TestQuery */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = Yii::t('test_system', 'Tests');
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="test-index">
+<h1>test/index</h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="body">
 
-    <p>
-        <?= Html::a(Yii::t('test_system', 'Create Test'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="col-md-3 col-xs-12">
+        <div class ="x_panel">
+            <div class="info">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            </div>
+            <div class="button">
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            </div>
+        </div>
+    </div>
 
-            'id',
-            'title',
-            'description:ntext',
-            'type',
-            'begin_at',
-            //'end_at',
-            //'deadline_at',
-            //'count_attempt',
-            //'is_exam',
-            //'is_draft',
-            //'time_limit:datetime',
-            //'created_at',
-            //'updated_at',
-            //'created_by',
-            //'updated_by',
+    <div class="col-md-3 col-xs-12">
+        <div class ="x_panel">
+            <div class="info">
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            </div>
+            <div class="button">
 
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-xs-12">
+        <div class ="x_panel">
+            <div class="info">
+
+            </div>
+            <div class="button">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-xs-12">
+        <div class ="x_panel">
+            <div class="info">
+
+            </div>
+            <div class="button">
+
+            </div>
+        </div>
+    </div>
 
 </div>
