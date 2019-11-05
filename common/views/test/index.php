@@ -12,61 +12,30 @@
             <div class="x_content">
                 <div class="row">
                     <!-- --------Начало блоков---------- -->
+                    <?php
+                    foreach ($test as $tests){
+                        echo '                    
                     <div class="col-md-55">
                         <div class="thumbnail">
-                            <div class="image view view-first">
-
+                            <div>
+                                <h3>'. $tests['title'].'</h3>
                             </div>
-                            <div class="caption">
-
+                            <div>
+                                <h3>'. $tests[''].'</h3>
+                            </div>  
+                            <div>
+                                <h3>'. .'</h3>
                             </div>
-                        </div>
-                    </div>
-                    <!-- --------------Блок 1---------------- -->
-                    <div class="col-md-55">
-                        <div class="thumbnail">
-                            <div class="image view view-first">
-
+                            <div>
+                                <h3>'. .'</h3>
                             </div>
-                            <div class="caption">
-
+                            <div>
+                                <h3>'. .'</h3>
                             </div>
                         </div>
-                    </div>
-                    <!-- --------------Блок 2---------------- -->
-                    <div class="col-md-55">
-                        <div class="thumbnail">
-                            <div class="image view view-first">
-
-                            </div>
-                            <div class="caption">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- --------------Блок 3---------------- -->
-                    <div class="col-md-55">
-                        <div class="thumbnail">
-                            <div class="image view view-first">
-
-                            </div>
-                            <div class="caption">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- --------------Блок 4---------------- -->
-                    <div class="col-md-55">
-                        <div class="thumbnail">
-                            <div class="image view view-first">
-
-                            </div>
-                            <div class="caption">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- --------------Блок 5---------------- -->
+                    </div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>

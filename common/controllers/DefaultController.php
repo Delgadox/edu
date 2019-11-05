@@ -1,6 +1,7 @@
 <?php
 
 namespace app\common\controllers;
+use yii\helpers\Url;
 
 use yii\web\Controller;
 
@@ -15,6 +16,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->redirect(Url::to(['/common/test/index']));
     }
 }
