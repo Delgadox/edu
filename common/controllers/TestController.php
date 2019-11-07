@@ -22,12 +22,16 @@ class TestController extends \yii\web\Controller
         if ($_SESSION['__id'] == null){
             return $this->redirect(Url::to(['../user/login']));
         }
-        $uploads = testHasAnswerFileUpload::find()->where(['test_id'=>$_GET['id']])->asArray()->all();
+        $uploads = testHasAnswerFileUpload::find()->where(['test_id'=>$_GET['id']])->all();
         $results=array();
+//        print_r($uploads);
         foreach ($uploads as $upload){
-            $results[]=$upload->answerfileupload;
+            $results[]=$upload->afu;
+            print_r($upload->afu);
+            die;
+//            print_r ($results);
+
         }
-        print_r ($results);
 
         return $this->render('list',['uploads'=>$uploads]);
     }

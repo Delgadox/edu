@@ -81,7 +81,7 @@ class TestHasAnswerFileUpload extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAnswerFileUpload()
+    public function getAfu()
     {
         return $this->hasOne(AnswerFileUpload::className(), ['id' => 'answer_file_upload_id']);
     }
