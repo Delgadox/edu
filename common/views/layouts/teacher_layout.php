@@ -73,6 +73,7 @@ $user = \Yii::$app->user;
 								            ['label' => 'Groups', 'url' => ['/common/group/index']],
             ['label' => 'Course', 'url' => ['/common/course/index']],
             ['label' => 'Lecture', 'url' => ['/common/lecture/index']],
+            ["label" => 'Тесты оценка', 'url' => ['/common/test']],
             ['label' => 'User management', 'url' => ['/user/admin/index']],
 	        Yii::$app->user->isGuest ?
 		        ['label' => 'Sign in', 'url' => ['/user/security/login']] :

@@ -13,9 +13,22 @@ class TestController extends \yii\web\Controller
         if ($_SESSION['__id'] == null){
             return $this->redirect(Url::to(['../user/login']));
         }
-        $upload = testHasAnswerFileUpload::find()->where()
         $test = test::find()->where(['created_by'=> $_SESSION['__id']])->asArray()->all();
         return $this->render('index',['test'=>$test]);
     }
 
+    public function actionList()
+    {
+        if ($_SESSION['__id'] == null){
+            return $this->redirect(Url::to(['../user/login']));
+        }
+        $uploads = testHasAnswerFileUpload::find()->where(['test_id'=>$_GET['id']])->asArray()->all();
+        $results=array();
+        foreach ($uploads as $upload){
+            $results[]=$upload->answerfileupload;
+        }
+        print_r ($results);
+
+        return $this->render('list',['uploads'=>$uploads]);
+    }
 }

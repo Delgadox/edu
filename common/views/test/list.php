@@ -14,15 +14,15 @@ use yii\helpers\Url;
                 <div class="row">
                     <!-- --------Начало блоков---------- -->
                     <?php
-                    foreach ($test as $tests){
+//                    foreach ($uploads as $upload){
                         echo '                    
                     <div class="col-md-55">
                         <div class="thumbnail">
                             <div>
-                                <h3 class="x_title">'. $tests['title'].'</h3>
+                                <h3 class="x_title">'. $uploads['title'].'</h3>
                             </div>
                             <div class="x_content">
-                                <span>'. $tests[''].'</span>
+                                <span>'. $uploads[''].'</span>
                             </div> 
                             <div class="x_content">
                                 <span>Описание</span>
@@ -31,11 +31,11 @@ use yii\helpers\Url;
                                 <span>Дата</span>
                             </div>
                             <div class="x_content right">
-                                <a href="'.Url::to(['/common/test/list', 'id' => $tests['id']]).'" class="btn btn-success right">Открыть</a>
+                                <a href="'.Url::to(['/common/test/grading', 'id' => $uploads['id']]).'" class="btn btn-success right">Открыть</a>
                             </div>
                         </div>
                     </div>';
-                    }
+//                    }
                     ?>
                 </div>
             </div>
