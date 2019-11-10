@@ -22,13 +22,10 @@ use yii\helpers\Url;
                                 <h3 class="x_title">'. $tests['title'].'</h3>
                             </div>
                             <div class="x_content">
-                                <span>'. $tests[''].'</span>
-                            </div> 
-                            <div class="x_content">
-                                <span>Описание</span>
+                                <span>Описание: '.$tests['description'].'</span>
                             </div>
                             <div class="x_content">
-                                <span>Дата</span>
+                                <span>Дата: '.$tests['begin_at'].'</span>
                             </div>
                             <div class="x_content right">
                                 <a href="'.Url::to(['/common/test/list', 'id' => $tests['id']]).'" class="btn btn-success right">Открыть</a>

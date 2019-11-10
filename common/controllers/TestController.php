@@ -1,6 +1,7 @@
 <?php
 
 namespace app\common\controllers;
+use app\common\models\AnswerFileUpload;
 use app\common\models\Test;
 use app\common\models\TestHasAnswerFileUpload;
 use yii\helpers\Url;
@@ -27,12 +28,19 @@ class TestController extends \yii\web\Controller
 //        print_r($uploads);
         foreach ($uploads as $upload){
             $results[]=$upload->afu;
-            print_r($upload->afu);
-            die;
-//            print_r ($results);
-
         }
+        $saved = $_GET['id'];
 
-        return $this->render('list',['uploads'=>$uploads]);
+        return $this->render('list',['results'=>$results, 'saved'=>$saved]);
+    }
+
+    public function actionGrading()
+    {
+        if ($_SESSION['__id'] == null){
+            return $this->redirect(Url::to(['../user/login']));
+        }
+        $upload = AnswerFileUpload::findOne(['id'=>$_GET['id']]);
+//        ->test['title']
+        return $this->render('grading', ['upload'=>$upload, 'TestName'=>$TestName]);
     }
 }
