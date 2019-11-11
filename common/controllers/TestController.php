@@ -1,10 +1,15 @@
 <?php
 
 namespace app\common\controllers;
+
+use Yii;
+use yii\web\Controller;
 use app\common\models\AnswerFileUpload;
+use app\common\models\AnswerGrade;
 use app\common\models\Test;
 use app\common\models\TestHasAnswerFileUpload;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 
 class TestController extends \yii\web\Controller
@@ -40,7 +45,13 @@ class TestController extends \yii\web\Controller
             return $this->redirect(Url::to(['../user/login']));
         }
         $upload = AnswerFileUpload::findOne(['id'=>$_GET['id']]);
-//        ->test['title']
-        return $this->render('grading', ['upload'=>$upload, 'TestName'=>$TestName]);
+        $model = TestHasAnswerFileUpload::findOne(['answer_file_upload_id'=>$_GET['id']]);
+        $gradings = AnswerGrade::find()->all();
+        $items = ArrayHelper::map($gradings,'id','grade_json');
+        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
+
+            return $this->redirect(['list', 'id' => $model->id]);
+        }
+        return $this->render('grading', ['upload'=>$upload, 'model'=>$model, 'items' => $items]);
     }
 }

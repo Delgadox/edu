@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property string $title
  * @property string $description
- * @property int $file_id
  * @property string $created_at
  * @property int $attempt
  * @property string $file_link
@@ -18,6 +17,7 @@ use Yii;
  * @property int $time_left
  * @property int $created_by
  *
+ * @property User $createdBy
  * @property TestHasAnswerFileUpload[] $testHasAnswerFileUploads
  */
 class AnswerFileUpload extends \yii\db\ActiveRecord
@@ -36,11 +36,12 @@ class AnswerFileUpload extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'file_link', 'created_by'], 'required'],
             [['description'], 'string'],
-            [['file_id', 'file_link'], 'required'],
-            [['file_id', 'attempt', 'time_left', 'created_by'], 'integer'],
             [['created_at'], 'safe'],
+            [['attempt', 'time_left', 'created_by'], 'integer'],
             [['title', 'file_link', 'file_type'], 'string', 'max' => 255],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -53,7 +54,6 @@ class AnswerFileUpload extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
-            'file_id' => 'File ID',
             'created_at' => 'Created At',
             'attempt' => 'Attempt',
             'file_link' => 'File Link',
@@ -61,6 +61,14 @@ class AnswerFileUpload extends \yii\db\ActiveRecord
             'time_left' => 'Time Left',
             'created_by' => 'Created By',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     /**

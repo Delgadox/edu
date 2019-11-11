@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 ?>
 <h1>test/list</h1>
@@ -41,24 +42,32 @@ use yii\widgets\ActiveForm;
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>'; ?>
                 <!----------Конец файла------------>
                 
-                <!----------Начало нижней панели------------>                
-                <div class="left">
-                    <a class="btn btn-danger" href="'.Url::to(['/common/test/list', 'id'=>$_GET['save']]) .'">Отмена</a>
-                </div>'; ?>
-                <?php $form = ActiveForm::begin(); ?>
+                <!----------Начало нижней панели------------>
+                <?php  echo '<div class="x_panel">'; ?>
+                    <?php $form = ActiveForm::begin(); ?>
 
-                    <?= $form->field($model, 'title')->textarea(['rows' => 2]) ?>
+                        <?= $form->field($model, 'grade_id')->widget(Select2::classname(), [
+                            'hideSearch' => true,
+                            'data' => $items,
+                            'options' => ['placeholder' => 'Выберите оценку...'],
+                            'pluginOptions' => [
+                            'allowClear' => true
+                            ],
+                            ]) ?>
 
-                    <?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?>
+                        <div class="left">
+                            <a class="btn btn-danger" href="'.Url::to(['/common/test/list', 'id'=>$_GET['save']]) .'">Отмена</a>
+                        </div>
 
-                    <div class="form-group">
-                        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
-                    </div>
+                        <div class="form-group left">
+                            <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+                        </div>
 
-                <?php ActiveForm::end(); ?>
+                    <?php ActiveForm::end(); ?>
+                <?php  echo '</div>'; ?>
                 <!----------Начало нижней панели------------>
             </div>
         </div>
