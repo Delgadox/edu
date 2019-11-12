@@ -17,6 +17,9 @@ use yii\helpers\Url;
                 <div class="row">
                     <!-- --------Начало блоков---------- -->
                     <?php
+                    if ($test == null){
+                        echo "Не один из пользователей не отправил работу";
+                    }
                     foreach ($results as $result){
                         echo '                    
                     <div class="col-md-55">

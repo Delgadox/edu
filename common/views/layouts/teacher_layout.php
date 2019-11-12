@@ -90,7 +90,7 @@ $user = \Yii::$app->user;
 										['label' => 'Sign in', 'url' => ['/user/security/login']] :
 										['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
 										 'url' => ['/user/security/logout'],
-										 'linkOptions' => ['data-method' => 'post']],
+                                            'template' => '<a href="{url}" data-method="post">{label}</a>'],
 									['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
 
 									["label" => "Home", "url" => "/", "icon" => "home"],
