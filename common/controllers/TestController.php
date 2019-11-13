@@ -12,6 +12,7 @@ use app\common\models\TestHasAnswerFileUpload;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use app\common\models\AuthAssignment;
+use yii\data\Pagination;
 
 class TestController extends \yii\web\Controller
 {
@@ -47,8 +48,14 @@ class TestController extends \yii\web\Controller
         if ($_SESSION['__id'] == null){
             return $this->redirect(Url::to(['../user/login']));
         }
-        $test = test::find()->where(['created_by'=> $_SESSION['__id']])->asArray()->all();
-        return $this->render('index',['test'=>$test]);
+//        $test = test::find()->where(['created_by'=> $_SESSION['__id']])->asArray()->all();
+        $query = test::find()->where(['created_by'=> $_SESSION['__id']]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 15]);
+        $posts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index',compact('posts', 'pages'));
     }
 
     public function actionList()

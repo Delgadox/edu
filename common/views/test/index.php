@@ -1,7 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 ?>
+
 <h1>test/index</h1>
 
 <div class="body">
@@ -14,29 +16,35 @@ use yii\helpers\Url;
                 <div class="row">
                     <!-- --------Начало блоков---------- -->
                     <?php
-                    if ($test == null){
+                    if ($posts == null){
                         echo "У данного пользователя нету тестов";
                     }
-                    foreach ($test as $tests){
+                    echo '<div class="x_panel"';
+                    foreach ($posts as $post){
                         echo '                    
                     <div class="col-md-55">
                         <div class="thumbnail">
                             <div>
-                                <h3 class="x_title">'. $tests['title'].'</h3>
+                                <h3 class="x_title">'. $post['title'].'</h3>
                             </div>
                             <div class="x_content">
-                                <span>Описание: '.$tests['description'].'</span>
+                                <span>Описание: '.$post['description'].'</span>
                             </div>
                             <div class="x_content">
-                                <span>Дата: '.$tests['begin_at'].'</span>
+                                <span>Дата: '.$post['begin_at'].'</span>
                             </div>
                             <div class="x_content right">
-                                <a href="'.Url::to(['/common/test/list', 'id' => $tests['id']]).'" class="btn btn-success right">Открыть</a>
+                                <a href="'.Url::to(['/common/test/list', 'id' => $post['id']]).'" class="btn btn-success right">Открыть</a>
                             </div>
                         </div>
                     </div>';
                     }
+                    echo '/div>';
                     ?>
+                    <?= LinkPager::widget([
+                        'pagination' => $pages,
+                    ]); ?>
+
                 </div>
             </div>
         </div>
