@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 
 ?>
-<h1>test/list</h1>
+<h1>Оценка теста</h1>
 
 <div class="body">
 
@@ -35,16 +35,12 @@ use kartik\select2\Select2;
                 <!----------Конец описания------------>
                 
                 <!----------Начало файла------------>
-                    <div class="x_panel">
-                        <div class="bs-example" data-example-id="simple-jumbotron">
-                            <div class="jumbotron">
-                            <span>Тут могла быть ваша реклама</span>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="btn btn-success" href="'.Url::to(['/common/test/file', 'id'=>$model['answer_file_upload_id']]).'">
+                    Скачать фаил
+                    </a>
                 </div>'; ?>
                 <!----------Конец файла------------>
-                
+
                 <!----------Начало нижней панели------------>
                 <?php  echo '<div class="x_panel">'; ?>
                     <?php $form = ActiveForm::begin(); ?>
@@ -59,7 +55,7 @@ use kartik\select2\Select2;
                             ]) ?>
 
                         <div class="left">
-                            <a class="btn btn-danger" href="'.Url::to(['/common/test/list', 'id'=>$_GET['save']]) .'">Отмена</a>
+                            <a class="btn btn-danger" href="<?= Url::to(['/common/test/list', 'id'=>$_GET['save']]) ?>">Отмена</a>
                         </div>
 
                         <div class="form-group left">

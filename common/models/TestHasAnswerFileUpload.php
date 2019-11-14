@@ -13,8 +13,8 @@ use Yii;
  * @property int $grade_id
  *
  * @property AnswerFileUpload $answerFileUpload
- * @property AnswerGrade $grade
  * @property Test $test
+ * @property AnswerGrade $grade
  */
 class TestHasAnswerFileUpload extends \yii\db\ActiveRecord
 {
@@ -33,10 +33,9 @@ class TestHasAnswerFileUpload extends \yii\db\ActiveRecord
     {
         return [
             [['test_id', 'answer_file_upload_id', 'grade_id'], 'integer'],
-            [['grade_id'], 'unique'],
             [['answer_file_upload_id'], 'exist', 'skipOnError' => true, 'targetClass' => AnswerFileUpload::className(), 'targetAttribute' => ['answer_file_upload_id' => 'id']],
-            [['grade_id'], 'exist', 'skipOnError' => true, 'targetClass' => AnswerGrade::className(), 'targetAttribute' => ['grade_id' => 'id']],
             [['test_id'], 'exist', 'skipOnError' => true, 'targetClass' => Test::className(), 'targetAttribute' => ['test_id' => 'id']],
+            [['grade_id'], 'exist', 'skipOnError' => true, 'targetClass' => AnswerGrade::className(), 'targetAttribute' => ['grade_id' => 'id']],
         ];
     }
 
@@ -64,16 +63,16 @@ class TestHasAnswerFileUpload extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getGrade()
+    public function getTest()
     {
-        return $this->hasOne(AnswerGrade::className(), ['id' => 'grade_id']);
+        return $this->hasOne(Test::className(), ['id' => 'test_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTest()
+    public function getGrade()
     {
-        return $this->hasOne(Test::className(), ['id' => 'test_id']);
+        return $this->hasOne(AnswerGrade::className(), ['id' => 'grade_id']);
     }
 }

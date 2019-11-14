@@ -133,6 +133,11 @@ a.desc:after {
     float: right;
 }
 
+.rightbut{
+    float: right;
+    margin-top: 10%;
+}
+
 .bheight{
     height: 230px;
 }
@@ -142,5 +147,12 @@ a.desc:after {
 }
 
 .buttonPos{
-
+    margin-left: 40%;
+}
+.paginationplus {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    background-color: #0a0a0a;
 }

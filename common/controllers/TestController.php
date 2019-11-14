@@ -38,6 +38,11 @@ class TestController extends \yii\web\Controller
                         'actions' => ['grading'],
                         'roles' => ['teacher','admin','manager'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['file'],
+                        'roles' => ['teacher','admin','manager'],
+                    ],
                 ],
             ],
         ];
@@ -83,10 +88,19 @@ class TestController extends \yii\web\Controller
         $model = TestHasAnswerFileUpload::findOne(['answer_file_upload_id'=>$_GET['id']]);
         $gradings = AnswerGrade::find()->all();
         $items = ArrayHelper::map($gradings,'id','grade_json');
+//        if(Yii::$app->request->post()){
+//            print_r($model->grade_id);
+//        }
         if ($model->load(Yii::$app->request->post()) && $model->save() ) {
-
             return $this->redirect(['list', 'id' => $model->id]);
         }
         return $this->render('grading', ['upload'=>$upload, 'model'=>$model, 'items' => $items]);
+    }
+
+    public function actionFile(){
+        $filepat = AnswerFileUpload::findOne(['id'=>$_GET['id']]);
+        $filepath = $filepat['file_link'];
+//        echo $filepath['file_link'];
+        return Yii::$app->response->sendFile($filepath);
     }
 }

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
 
-<h1>test/index</h1>
+<h1>Список созданных вами тестов</h1>
 
 <div class="body">
 
@@ -19,7 +19,6 @@ use yii\widgets\LinkPager;
                     if ($posts == null){
                         echo "У данного пользователя нету тестов";
                     }
-                    echo '<div class="x_panel"';
                     foreach ($posts as $post){
                         echo '                    
                     <div class="col-md-55">
@@ -33,18 +32,20 @@ use yii\widgets\LinkPager;
                             <div class="x_content">
                                 <span>Дата: '.$post['begin_at'].'</span>
                             </div>
-                            <div class="x_content right">
-                                <a href="'.Url::to(['/common/test/list', 'id' => $post['id']]).'" class="btn btn-success right">Открыть</a>
+                            <br>
+                            <div class="x_content rightbut">
+                                <a href="'.Url::to(['/common/test/list', 'id' => $post['id']]).'" class="btn btn-primary right">Открыть</a>
                             </div>
                         </div>
                     </div>';
                     }
-                    echo '/div>';
                     ?>
+                    <div class="buttonPos">
                     <?= LinkPager::widget([
                         'pagination' => $pages,
+//                        'options' => ['class' => 'paginationplus']
                     ]); ?>
-
+                    </div>
                 </div>
             </div>
         </div>

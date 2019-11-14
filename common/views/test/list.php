@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 ?>
-<h1>test/list</h1>
+<h1>Список файлов отправленных на тест</h1>
 
 <div class="body">
 
@@ -17,11 +17,11 @@ use yii\helpers\Url;
                 <div class="row">
                     <!-- --------Начало блоков---------- -->
                     <?php
-                    if ($test == null){
-                        echo "Не один из пользователей не отправил работу";
-                    }
-                    foreach ($results as $result){
-                        echo '                    
+                    if ($results == null){
+                        echo "Не один из пользователей не отправил работу к данному тесту";
+                    }else{
+                        foreach ($results as $result){
+                            echo '                    
                     <div class="col-md-55">
                         <div class="thumbnail bheight">
                             <div class="sheight">
@@ -29,13 +29,13 @@ use yii\helpers\Url;
                                     <h3 class="x_title">'. $result['title'].'</h3>
                                 </div>
                                 ';
-                                if($result['description']!=null){
-                                    echo '                            
+                            if($result['description']!=null){
+                                echo '                            
                                     <div class="x_content">       
                                         <span>Описание: '.$result['description'].'</span>
                                     </div>';
-                                 };
-                                echo '
+                            };
+                            echo '
                                 <div class="x_content">
                                     <span>Дата: '.$result['created_at'].'</span>
                                 </div>
@@ -43,15 +43,16 @@ use yii\helpers\Url;
                                     <span>Имя Ученика: '.$result->createdBy['username'].'</span>
                                 </div>
                                 <div class="x_content">
-                                    <span>Оценка: '.$result->testHasAnswerFileUploads[0]->grade['grade_json'].'</span>
+                                    <span>Оценка: '.$result->testHasFile[0]->grade['grade_json'].'</span>
                                 </div>
                             </div>
                             <div class="x_content right">
-                                <a href="'.Url::to(['/common/test/grading', 'id' => $result['id'],'save' => $saved]).'" class="btn btn-success right">Открыть</a>
+                                <a href="'.Url::to(['/common/test/grading', 'id' => $result['id'],'save' => $saved]).'" class="btn btn-primary right">Открыть</a>
                             </div>
                         </div>
                     </div>
                     ';}
+                    }
                     ?>
                 </div>
             </div>
