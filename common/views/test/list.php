@@ -26,13 +26,13 @@ use yii\helpers\Url;
                         <div class="thumbnail bheight">
                             <div class="sheight">
                                 <div>
-                                    <h3 class="x_title">'. $result['title'].'</h3>
+                                    <span class="x_title ltitle">'. $result['title'].'</span>
                                 </div>
                                 ';
                             if($result['description']!=null){
                                 echo '                            
-                                    <div class="x_content">       
-                                        <span>Описание: '.$result['description'].'</span>
+                                    <div class="x_content text">       
+                                        <span class="text">Описание: '.$result['description'].'</span>
                                     </div>';
                             };
                             echo '

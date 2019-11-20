@@ -156,3 +156,15 @@ a.desc:after {
     border-radius: 4px;
     background-color: #0a0a0a;
 }
+
+.text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+}
+
+.ltitle {
+    font-weight: bold ;
+    font-size: 20px;
+    overflow: hidden;
+}

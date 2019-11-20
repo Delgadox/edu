@@ -27,7 +27,7 @@ use yii\widgets\LinkPager;
                                 <h3 class="x_title">'. $post['title'].'</h3>
                             </div>
                             <div class="x_content">
-                                <span>Описание: '.$post['description'].'</span>
+                                <span class="text">Описание: '.$post['description'].'</span>
                             </div>
                             <div class="x_content">
                                 <span>Дата: '.$post['begin_at'].'</span>
